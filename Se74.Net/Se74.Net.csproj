@@ -50,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\Se74Context.cs" />
+    <Compile Include="Context\Se74Page.cs" />
+    <Compile Include="Driver\ChromeProvider.cs" />
+    <Compile Include="Driver\IDriverProvider.cs" />
     <Compile Include="Driver\Se74Driver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

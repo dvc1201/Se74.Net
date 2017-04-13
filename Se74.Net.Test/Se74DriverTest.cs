@@ -16,5 +16,14 @@ namespace Se74.Net.Test
             Assert.IsNotNull(Driver);
             Assert.IsTrue(Driver is IWebDriver);
         }
+
+
+        [TestMethod]
+        public void OpenWeather()
+        {
+            Test.Weather
+                .Open()
+                .Pause(5);
+        }
     }
 }

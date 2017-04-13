@@ -15,7 +15,7 @@ namespace Se74.Net.Test
         [TestInitialize]
         public void TestInit()
         {
-            Se74Driver.New();
+            Se74Driver.New(new ChromeProvider());
             MySe74Context.New();
         }
 

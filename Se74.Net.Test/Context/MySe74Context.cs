@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using Se74.Net.Context;
 using Se74.Net.Driver;
+using Se74.Net.Test.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,14 @@ namespace Se74.Net.Test.Context
 
         public static MySe74Context Current { get; private set; }
 
-        public IWebDriver Driver => Se74Driver.Current.Driver;
+
+        public WeatherHome Weather { get; private set; }
+
 
 
         private MySe74Context()
         {
-
+            Weather = new WeatherHome(this);
         }
 
         public static void New()

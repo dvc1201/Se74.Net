@@ -13,16 +13,18 @@ namespace Se74.Net.Driver
         public static Se74Driver Current { get; private set; }
 
         public IWebDriver Driver { get; private set; }
+        public IDriverProvider Provider { get; private set; }
 
-        private Se74Driver()
+        private Se74Driver(IDriverProvider provider)
         {
-            Driver = new ChromeDriver();
+            Driver = provider.NewDriver();
         }
 
-        public static void New()
+        public static void New(IDriverProvider provider)
         {
             Release();
-            Current = new Se74Driver();
+            Current = new Se74Driver(provider);
+            Current.Provider = provider;
         }
 
         public static void Release()
