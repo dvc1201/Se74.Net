@@ -59,6 +59,7 @@ namespace Se74.Net.Driver
             if (Current!=null && Current.Driver!=null)
             {
                 Current.Driver.Quit();
+                Current.Driver.Dispose();
             }
         }
 
