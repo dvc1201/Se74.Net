@@ -17,12 +17,14 @@ namespace Se74.Net.Test.Context
 
 
         public WeatherHome Weather { get; private set; }
+        public HtmlForm Form { get; private set; }
 
 
 
         private MySe74Context()
         {
             Weather = new WeatherHome(this);
+            Form = new HtmlForm(this);
         }
 
         public static void New()

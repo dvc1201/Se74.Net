@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,37 @@ namespace Se74.Net.Driver
 
         public IWebDriver Driver { get; private set; }
         public IDriverProvider Provider { get; private set; }
+        public int DefaultTimeOut = 60;
 
         private Se74Driver(IDriverProvider provider)
         {
             Driver = provider.NewDriver();
         }
+
+
+        private bool SafeCondition(Func<bool> condition)
+        {
+            try
+            {
+                return condition.Invoke();
+            } catch
+            {
+                return false;
+            }
+        }
+
+
+        private int TimeOut(int timeout=-1)
+        {
+            return timeout < 1 ? DefaultTimeOut : timeout;
+        }
+
+        public void WaitUntil(Func<bool> condition, int timeout=-1)
+        {
+            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeout));
+            wait.Until(delegate { return SafeCondition(condition); });
+        }
+
 
         public static void New(IDriverProvider provider)
         {

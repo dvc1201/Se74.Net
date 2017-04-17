@@ -54,6 +54,7 @@
     <Compile Include="Driver\ChromeProvider.cs" />
     <Compile Include="Driver\IDriverProvider.cs" />
     <Compile Include="Driver\Se74Driver.cs" />
+    <Compile Include="Elements\Se74Element.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
