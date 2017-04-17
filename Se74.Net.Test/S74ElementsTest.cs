@@ -13,5 +13,14 @@ namespace Se74.Net.Test
                 .Open();
             Assert.IsTrue(Test.Form.FormLink.Displayed);
         }
+
+        [TestMethod]
+        public void TestTextInput()
+        {
+            var form = Test.Form
+                .Open();
+            form.FirstName.SetValue("FirstName");
+            Assert.AreEqual("FirstName", form.FirstName.GetValue());
+        }
     }
 }

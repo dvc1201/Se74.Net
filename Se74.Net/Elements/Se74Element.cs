@@ -14,20 +14,60 @@ namespace Se74.Net.Elements
         protected IWebDriver Driver => DriverX.Driver;
         public By By { get; protected set; }
 
-        public virtual bool Displayed
+        public bool Displayed
         {
             get
             {
-                try
-                {
-                    return FindElement().Displayed;
-                }
-                catch
-                {
-                    return false;
-                }
+                    return SafeBool(() => IsDisplayed());
             }
         }
+
+        public bool Enabled
+        {
+            get
+            {
+                return SafeBool(() => IsEnabled());
+            }
+        }
+
+
+        public bool Ready
+        {
+            get
+            {
+                return SafeBool(() => IsReady());
+            }
+        }
+
+
+        private bool SafeBool(Func<bool> condition)
+        {
+            try
+            {
+                return condition.Invoke();
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        protected virtual bool IsDisplayed()
+        {
+            return FindElement().Displayed;
+        }
+
+        protected virtual bool IsEnabled()
+        {
+            return FindElement().Enabled;
+        }
+
+        protected virtual bool IsReady()
+        {
+            var field = this.FindElement();
+            return field.Enabled && field.Displayed;
+        }
+
 
         public Se74Element(By by, string name="", string comment="")
         {

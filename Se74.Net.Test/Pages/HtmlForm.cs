@@ -13,10 +13,14 @@ namespace Se74.Net.Test.Pages
     {
 
         public Se74Element FormLink { get; private set; }
+        public TextInput FirstName { get; private set; }
+        public TextInput LastName { get; private set; }
 
         public HtmlForm(MySe74Context context) : base(context)
         {
             FormLink = new Se74Element(By.XPath("//a[.='HTML Forms']"));
+            FirstName = new TextInput(By.Name("first_name"));
+            LastName = new TextInput(By.Name("first_name"));
         }
 
 
