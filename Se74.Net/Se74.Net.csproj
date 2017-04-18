@@ -55,6 +55,7 @@
     <Compile Include="Driver\IDriverProvider.cs" />
     <Compile Include="Driver\PhantomJsProvider.cs" />
     <Compile Include="Driver\Se74Driver.cs" />
+    <Compile Include="Elements\CheckBox.cs" />
     <Compile Include="Elements\Se74Element.cs" />
     <Compile Include="Elements\TextInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

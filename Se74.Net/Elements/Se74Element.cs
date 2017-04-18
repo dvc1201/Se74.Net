@@ -40,7 +40,7 @@ namespace Se74.Net.Elements
         }
 
 
-        private bool SafeBool(Func<bool> condition)
+        protected bool SafeBool(Func<bool> condition)
         {
             try
             {

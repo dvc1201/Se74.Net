@@ -22,5 +22,17 @@ namespace Se74.Net.Test
             form.FirstName.SetValue("FirstName");
             Assert.AreEqual("FirstName", form.FirstName.GetValue());
         }
+
+        [TestMethod]
+        public void TestCheckBox()
+        {
+            var form = Test.Form
+                .Open();
+            form.Maths.Set();
+            Assert.IsTrue(form.Maths.Selected);
+            form.Maths.Clear();
+            Assert.IsFalse(form.Maths.Selected);
+        }
+
     }
 }
