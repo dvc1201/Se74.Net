@@ -61,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report\Model\TestCase.cs" />
     <Compile Include="Report\Model\TestStep.cs" />
+    <Compile Include="Report\Se74Report.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
