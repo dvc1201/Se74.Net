@@ -26,6 +26,7 @@ namespace Se74.Net.Test
         [TestMethod]
         public void TestCheckBox()
         {
+            Test.Log("TestCase level log");
             var form = Test.Form
                 .Open();
             form.Maths.Set();

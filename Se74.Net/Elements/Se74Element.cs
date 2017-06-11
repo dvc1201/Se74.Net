@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using Se74.Net.Driver;
+using Se74.Net.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Se74.Net.Elements
     {
         protected Se74Driver DriverX => Se74Driver.Current;
         protected IWebDriver Driver => DriverX.Driver;
+        protected Se74Report Report => DriverX.Report;
         public By By { get; protected set; }
 
         public bool Displayed
@@ -78,5 +80,12 @@ namespace Se74.Net.Elements
         {
             return Driver.FindElement(this.By);
         }
+
+
+        public void Log(string log, params object[] list)
+        {
+            Report.Log(log, list);
+        }
+
     }
 }

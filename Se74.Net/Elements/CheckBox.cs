@@ -33,6 +33,7 @@ namespace Se74.Net.Elements
 
         public void Set(bool value=true)
         {
+            Log("CheckBox Set: {0}", value);
             DriverX.WaitUntil(() => this.Ready);
             var field = FindElement();
             if (!IsSelected(field)==value)

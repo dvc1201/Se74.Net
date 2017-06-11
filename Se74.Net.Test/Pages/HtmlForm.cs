@@ -30,6 +30,7 @@ namespace Se74.Net.Test.Pages
 
         public HtmlForm Open()
         {
+            Log("PageObject log: Open");
             Test.Driver.Navigate().GoToUrl(new Uri("https://www.tutorialspoint.com/html/html_forms.htm"));
             return this;
         }

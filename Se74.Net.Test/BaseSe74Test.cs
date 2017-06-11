@@ -15,8 +15,8 @@ namespace Se74.Net.Test
         [TestInitialize]
         public void TestInit()
         {
-            //Se74Driver.New(new ChromeProvider());
-            Se74Driver.New(new PhantomJsProvider());
+            Se74Driver.New(new ChromeProvider());
+            //Se74Driver.New(new PhantomJsProvider());
             MySe74Context.New();
         }
 

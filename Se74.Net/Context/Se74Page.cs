@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using Se74.Net.Logger;
+using Se74.Net.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,7 @@ namespace Se74.Net.Context
     {
         protected C Test { get; private set; }
         public IWebDriver Driver => Test.Driver;
+        public Se74Report Report => Test.Report;
 
         public Se74Page(C context)
         {
@@ -21,6 +24,11 @@ namespace Se74.Net.Context
         {
             Test.Pause(seconds);
             return this as P;
+        }
+
+        public void Log(string log, params object[] list)
+        {
+            Report.Log(log, list);
         }
 
 

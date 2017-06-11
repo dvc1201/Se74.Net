@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using Se74.Net.Logger;
+using Se74.Net.Report;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,15 @@ namespace Se74.Net.Driver
         public IWebDriver Driver { get; private set; }
         public IDriverProvider Provider { get; private set; }
         public int DefaultTimeOut = 60;
+        public Se74Report Report => Se74Report.Current ?? forceReport();
+
+        private Se74Report forceReport()
+        {
+            Se74Report.New(new ConsoleLog());
+            return Se74Report.Current;
+        }
+
+
 
         private Se74Driver(IDriverProvider provider)
         {
