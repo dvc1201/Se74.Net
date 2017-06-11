@@ -8,5 +8,6 @@ namespace Se74.Net.Report.Model
 {
     public class TestStep
     {
+        public IList<TestLog> Logs = new List<TestLog>();
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Se74.Net.Report.Model
 {
-    public class TestCase
+    public class TestSuite
     {
-        public IList<TestStep> Steps = new List<TestStep>();
+        public IList<TestCase> TestCases = new List<TestCase>();
     }
 }

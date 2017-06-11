@@ -1,4 +1,5 @@
 ﻿using Se74.Net.Logger;
+using Se74.Net.Report.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Se74.Net.Report
     {
         private static Se74Report report;
         private ISe74Logger logger;
+        private TestSuite suite = new TestSuite();
+        private TestCase testCase;
 
         private Se74Report(ISe74Logger logger)
         {
@@ -29,10 +32,15 @@ namespace Se74.Net.Report
             report = null;
         }
 
-
         public void Log(string log, params object[] list)
         {
             logger.Log(log, list);
+        }
+
+        public void NewCase()
+        {
+            testCase = new TestCase();
+            suite.TestCases.Add(testCase);
         }
 
     }
