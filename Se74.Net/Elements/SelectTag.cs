@@ -12,5 +12,11 @@ namespace Se74.Net.Elements
         public SelectTag(By by, string name = "", string comment = "") : base(by, name, comment)
         {
         }
+
+
+        public void SelectByValue(string value)
+        {
+
+        }
     }
 }
