@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Se74.Net.Test", "Se74.Net.T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Se74.Net", "Se74.Net\Se74.Net.csproj", "{775A5C07-FFF0-49E2-984F-4B5E8F25C265}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalBlue.HomeWork", "GlobalBlue.HomeWork\GlobalBlue.HomeWork.csproj", "{5B66E73F-95DE-4012-86A1-D6EAC050AEA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeleniumDrivers", "SeleniumDrivers", "{32AE0967-8383-4A69-AAFD-61B5B37AC063}"
+	ProjectSection(SolutionItems) = preProject
+		SeleniumDrivers\chromedriver.exe = SeleniumDrivers\chromedriver.exe
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,10 @@ Global
 		{775A5C07-FFF0-49E2-984F-4B5E8F25C265}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{775A5C07-FFF0-49E2-984F-4B5E8F25C265}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{775A5C07-FFF0-49E2-984F-4B5E8F25C265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B66E73F-95DE-4012-86A1-D6EAC050AEA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B66E73F-95DE-4012-86A1-D6EAC050AEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B66E73F-95DE-4012-86A1-D6EAC050AEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B66E73F-95DE-4012-86A1-D6EAC050AEA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
