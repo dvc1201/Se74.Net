@@ -57,6 +57,7 @@
     <Compile Include="Driver\Se74Driver.cs" />
     <Compile Include="Elements\CheckBox.cs" />
     <Compile Include="Elements\Se74Element.cs" />
+    <Compile Include="Elements\SelectTag.cs" />
     <Compile Include="Elements\TextInput.cs" />
     <Compile Include="Logger\ConsoleLog.cs" />
     <Compile Include="Logger\ISe74Logger.cs" />
