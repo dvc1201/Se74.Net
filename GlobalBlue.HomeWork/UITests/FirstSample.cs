@@ -17,5 +17,12 @@ namespace GlobalBlue.HomeWork.UITests
             Assert.IsNotNull(Test);
             Assert.IsNotNull(Test.Driver);
         }
+
+
+        [TestMethod]
+        public void OpenCalculator()
+        {
+            Test.Calculator.Open();
+        }
     }
 }

@@ -59,7 +59,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Context\GbhwConfig.cs" />
     <Compile Include="Context\GbhwContext.cs" />
+    <Compile Include="PageObjects\BaseGbhwPage.cs" />
+    <Compile Include="PageObjects\GbhwCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UITests\BaseUITest.cs" />
     <Compile Include="UITests\FirstSample.cs" />

@@ -1,4 +1,5 @@
-﻿using Se74.Net.Context;
+﻿using GlobalBlue.HomeWork.PageObjects;
+using Se74.Net.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,20 @@ namespace GlobalBlue.HomeWork.Context
         public static GbhwContext Current => _context;
 
 
-        private GbhwContext()
-        {
+        public GbhwCalculator Calculator { get; private set; }
+        public GbhwConfig Config { get; private set; }
 
+
+        private GbhwContext(GbhwConfig config)
+        {
+            Config = config;
+            Calculator = new GbhwCalculator(this);
         }
 
 
         public static void New()
         {
-            _context = new GbhwContext();
+            _context = new GbhwContext(new GbhwConfig());
         }
 
 
