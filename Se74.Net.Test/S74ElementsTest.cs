@@ -35,5 +35,20 @@ namespace Se74.Net.Test
             Assert.IsFalse(form.Maths.Selected);
         }
 
+
+        [TestMethod]
+        public void TestDropdown()
+        {
+            Test.Log("TestCase level log");
+            var form = Test.Form
+                .Open();
+            form.Dropdown.SelectByText("Physics");
+            Assert.AreEqual("Physics", form.Dropdown.SelectedValue);
+            form.Dropdown.SelectByValue("Maths");
+            Assert.AreEqual("Maths", form.Dropdown.SelectedText);
+        }
+
+
+
     }
 }
