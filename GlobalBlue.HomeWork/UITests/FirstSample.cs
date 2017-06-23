@@ -22,7 +22,10 @@ namespace GlobalBlue.HomeWork.UITests
         [TestMethod]
         public void OpenCalculator()
         {
-            Test.Calculator.Open();
+            Test.Calculator
+                .Open()
+                .SetCountryCode("AUT")
+                .SetAmount("500");
         }
     }
 }
