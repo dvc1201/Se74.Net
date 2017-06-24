@@ -17,6 +17,7 @@ namespace Se74.Net.Test.Pages
         public TextInput LastName { get; private set; }
         public CheckBox Maths { get; private set; }
         public CheckBox Physics { get; private set; }
+        public SelectTag Dropdown { get; private set; }
 
         public HtmlForm(MySe74Context context) : base(context)
         {
@@ -25,6 +26,7 @@ namespace Se74.Net.Test.Pages
             LastName = new TextInput(By.Name("first_name"));
             Maths = new CheckBox(By.Name("maths"));
             Physics = new CheckBox(By.Name("physics"));
+            Dropdown = new SelectTag(By.Name("dropdown"));
         }
 
 
