@@ -53,7 +53,7 @@ namespace Se74.Net.Driver
 
         public void WaitUntil(Func<bool> condition, int timeout=-1)
         {
-            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeout));
+            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(TimeOut(timeout)));
             wait.Until(delegate { return SafeCondition(condition); });
         }
 
