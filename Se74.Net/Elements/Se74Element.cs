@@ -81,6 +81,20 @@ namespace Se74.Net.Elements
             return Driver.FindElement(this.By);
         }
 
+        public IWebElement FindReadyElement()
+        {
+            if (!Ready)
+            {
+                DriverX.WaitUntil(() => Ready);
+            }
+            return Driver.FindElement(this.By);
+        }
+
+
+        public void Click()
+        {
+            FindReadyElement().Click();
+        }
 
         public void Log(string log, params object[] list)
         {
