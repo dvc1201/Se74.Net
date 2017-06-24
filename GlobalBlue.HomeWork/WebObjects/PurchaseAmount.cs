@@ -14,10 +14,9 @@ namespace GlobalBlue.HomeWork.WebObjects
         {
         }
 
-        public virtual void SetValue(string value)
+        public override void SetValue(string value)
         {
-            DriverX.WaitUntil(() => this.Ready);
-            var field = this.FindElement();
+            var field = this.FindReadyElement();
             field.Click();
             field.Clear();
             field.SendKeys(value);

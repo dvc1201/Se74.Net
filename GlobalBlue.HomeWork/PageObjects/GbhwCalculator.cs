@@ -48,6 +48,7 @@ namespace GlobalBlue.HomeWork.PageObjects
             foreach (var purchase in purchases)
             {
                 SetAmount(purchase.Amount);
+                AddButton.Click();
             }
         }
 
