@@ -20,6 +20,8 @@ namespace GlobalBlue.HomeWork.PageObjects
         private PurchaseAmount Amount;
         private Se74Element ResetButton;
         private Se74Element AddButton;
+        private Se74Element InvalidInput;
+        private Se74Element MinimumError;
 
         public GbhwCalculator(GbhwContext context) : base(context)
         {
@@ -27,6 +29,8 @@ namespace GlobalBlue.HomeWork.PageObjects
             Amount = new PurchaseAmount(By.Name("purchase_amount"));
             ResetButton = new Se74Element(By.CssSelector("a.btn-reset"));
             AddButton = new Se74Element(By.CssSelector("a.add-purchase"));
+            InvalidInput = new Se74Element(By.XPath("//h4[.='Invalid Input']"));
+            MinimumError = new Se74Element(By.XPath("//h4[.='You need to purchase at least']"));
         }
 
         public GbhwCalculator Open()
@@ -48,7 +52,20 @@ namespace GlobalBlue.HomeWork.PageObjects
             foreach (var purchase in purchases)
             {
                 SetAmount(purchase.Amount);
-                AddButton.Click();
+                Test.Pause(2);
+                if (purchase.CalculatedRefund.StartsWith("@INVALID"))
+                {
+                    Test.DriverX.WaitUntil(() => InvalidInput.Displayed);
+
+                } else if (purchase.CalculatedRefund.StartsWith("@MINIMUM"))
+                {
+                    Test.DriverX.WaitUntil(() => MinimumError.Displayed);
+
+                }
+                else
+                {
+                    AddButton.Click();
+                }
             }
         }
 
