@@ -8,13 +8,14 @@ namespace GlobalBlue.HomeWork.Context
 {
     public class GbhwConfig
     {
-
+        public string GbHost { get; private set; }
         public Uri CalculatorUrl { get; private set; }
 
 
         public GbhwConfig()
         {
-            CalculatorUrl = new Uri("http://www.globalblue.com/tax-free-shopping/refund-calculator/");
+            GbHost = "http://www.globalblue.com";
+            CalculatorUrl = new Uri($"{GbHost}/tax-free-shopping/refund-calculator/");
         }
     }
 }

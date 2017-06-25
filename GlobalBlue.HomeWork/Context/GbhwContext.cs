@@ -1,4 +1,5 @@
 ﻿using GlobalBlue.HomeWork.PageObjects;
+using GlobalBlue.HomeWork.Services;
 using Se74.Net.Context;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace GlobalBlue.HomeWork.Context
 
 
         public GbhwCalculator Calculator { get; private set; }
+        public CalculatorClient CalculatorService { get; private set; }
         public GbhwConfig Config { get; private set; }
 
 
@@ -23,6 +25,7 @@ namespace GlobalBlue.HomeWork.Context
         {
             Config = config;
             Calculator = new GbhwCalculator(this);
+            CalculatorService = new CalculatorClient(this);
         }
 
 

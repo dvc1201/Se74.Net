@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GlobalBlue.HomeWork.UITests
+namespace GlobalBlue.HomeWork.Tests
 {
     public class BaseUITest
     {
