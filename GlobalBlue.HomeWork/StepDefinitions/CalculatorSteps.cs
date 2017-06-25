@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,13 +32,15 @@ namespace GlobalBlue.HomeWork.StepDefinitions
         }
 
         [Then(@"I should see that (.*) Purchases are displayed")]
-        public void ThenIShouldSeeThatPurchasesAreAdded(int p0)
+        public void ThenIShouldSeeThatPurchasesAreAdded(int rows)
         {
+            Assert.AreEqual(rows, Test.Calculator.NumberOfAddedPurchases);
         }
 
         [Then(@"I should see proper Calculated and Total values")]
         public void ThenIShouldSeeProperCalculatedAndTotalValues()
         {
+            Assert.IsTrue(Test.Calculator.TotalsAreCalculatedProperly());
         }
 
     }

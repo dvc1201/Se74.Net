@@ -22,6 +22,10 @@ namespace GlobalBlue.HomeWork.PageObjects
         private Se74Element AddButton;
         private Se74Element InvalidInput;
         private Se74Element MinimumError;
+        private IEnumerable<PurchaseItem> Purchases;
+        private Se74Element InputRefund;
+        private Se74Element TotalPurchase;
+        private Se74Element TotalRefund;
 
         public GbhwCalculator(GbhwContext context) : base(context)
         {
@@ -31,6 +35,17 @@ namespace GlobalBlue.HomeWork.PageObjects
             AddButton = new Se74Element(By.CssSelector("a.add-purchase"));
             InvalidInput = new Se74Element(By.XPath("//h4[.='Invalid Input']"));
             MinimumError = new Se74Element(By.XPath("//h4[.='You need to purchase at least']"));
+            InputRefund = new Se74Element(By.CssSelector("div.input-row .refund-amount"));
+            TotalPurchase = new Se74Element(By.CssSelector("div.total-row .total-purchase-amount"));
+            TotalRefund = new Se74Element(By.CssSelector("div.total-row .total-refund-amount"));
+        }
+
+        public int NumberOfAddedPurchases
+        {
+            get
+            {
+                return Driver.FindElements(By.CssSelector("div.row-purchase-refund-amount")).Count;
+            }
         }
 
         public GbhwCalculator Open()
@@ -48,11 +63,11 @@ namespace GlobalBlue.HomeWork.PageObjects
 
         internal void AddPurchases(Table table)
         {
-            var purchases = table.CreateSet<PurchaseItem>();
-            foreach (var purchase in purchases)
+            Purchases = table.CreateSet<PurchaseItem>();
+            foreach (var purchase in Purchases)
             {
                 SetAmount(purchase.Amount);
-                Test.Pause(2);
+                //Test.Pause(2);
                 if (purchase.CalculatedRefund.StartsWith("@INVALID"))
                 {
                     Test.DriverX.WaitUntil(() => InvalidInput.Displayed);
@@ -64,6 +79,7 @@ namespace GlobalBlue.HomeWork.PageObjects
                 }
                 else
                 {
+                    Test.DriverX.WaitUntil(() => InputRefund.FindElement().Text.Replace(",","").Equals(purchase.CalculatedRefund));
                     AddButton.Click();
                 }
             }
@@ -76,11 +92,36 @@ namespace GlobalBlue.HomeWork.PageObjects
         }
 
 
+        public bool TotalsAreCalculatedProperly()
+        {
+            var totalPurchase = decimal.Parse(TotalPurchase.FindElement().Text.Replace(",", ""));
+            var totalRefund = decimal.Parse(TotalRefund.FindElement().Text.Replace(",", ""));
+            var expectedPurchase = Purchases.Where(e => e.DecRefund != 0.00m).Sum(od => od.DecAmount);
+            var expectedRefund = Purchases.Sum(od => od.DecRefund);
+            return totalPurchase.Equals(expectedPurchase) && totalRefund.Equals(expectedRefund);
+        }
+
 
         internal class PurchaseItem
         {
             public string Amount;
             public string CalculatedRefund;
+
+            public decimal DecAmount => ParseDecimal(Amount);
+            public decimal DecRefund => ParseDecimal(CalculatedRefund);
+
+
+            private decimal ParseDecimal(string value)
+            {
+                try
+                {
+                    return decimal.Parse(value);
+                }
+                catch (Exception)
+                {
+                    return 0.00m;
+                }
+            }
         }
     }
 }
