@@ -43,5 +43,18 @@ namespace GlobalBlue.HomeWork.StepDefinitions
             Assert.IsTrue(Test.Calculator.TotalsAreCalculatedProperly());
         }
 
+        [When(@"I Reset the Calculator Page")]
+        public void WhenIResetTheCalculatorPage()
+        {
+            Test.Calculator.Reset();
+        }
+
+        [Then(@"Calculator Page is initialised")]
+        public void ThenCalculatorPageIsInitialised()
+        {
+            Test.DriverX.WaitUntil(() => Test.Calculator.IsAfterReset());
+        }
+
+
     }
 }

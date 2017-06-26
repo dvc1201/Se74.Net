@@ -80,9 +80,16 @@ namespace GlobalBlue.HomeWork.PageObjects
                 else
                 {
                     Test.DriverX.WaitUntil(() => InputRefund.FindElement().Text.Replace(",","").Equals(purchase.CalculatedRefund));
+                    Test.Pause(1);
                     AddButton.Click();
                 }
             }
+        }
+
+        public GbhwCalculator Reset()
+        {
+            ResetButton.Click();
+            return this;
         }
 
         public GbhwCalculator SetAmount(string amount)
@@ -99,6 +106,13 @@ namespace GlobalBlue.HomeWork.PageObjects
             var expectedPurchase = Purchases.Where(e => e.DecRefund != 0.00m).Sum(od => od.DecAmount);
             var expectedRefund = Purchases.Sum(od => od.DecRefund);
             return totalPurchase.Equals(expectedPurchase) && totalRefund.Equals(expectedRefund);
+        }
+
+        public bool IsAfterReset()
+        {
+            return Country.Displayed && Amount.Displayed && NumberOfAddedPurchases==0
+                && decimal.Parse(TotalPurchase.FindElement().Text.Replace(",", "")).Equals(0m)
+                && decimal.Parse(TotalRefund.FindElement().Text.Replace(",", "")).Equals(0m);
         }
 
 

@@ -22,3 +22,5 @@ Scenario: Calculate in Austria
 	| 85000    | 12750.00         |
 	Then I should see that 4 Purchases are displayed
 	And  I should see proper Calculated and Total values
+	When I Reset the Calculator Page
+	Then Calculator Page is initialised
